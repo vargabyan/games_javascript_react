@@ -1,0 +1,24 @@
+.Cells{
+  /* all: initial; */
+  width: 48px;
+  height: 48px;
+  border: solid 1px black;
+  float: left;
+  text-align: center;
+  line-height: 3rem;
+  font-size: 25px;
+  font-weight: bold;
+}
+.section{
+  width: 150px;
+  height: 50px;
+}
+.game{
+  width: 150px;
+  float: left;
+}
+.go_to_move{
+  width: 250px;
+  float: left;
+  padding-left: 48px;
+}
