@@ -4,7 +4,6 @@ import Add from "./add";
 import CellLogic from "./cell_logic";
 import {CallFunction} from "./move";
 
-
 class App extends Component {
     constructor(props){
         super(props)
