@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Playground from "./playground";
 
 
 class App extends Component{
@@ -7,6 +8,7 @@ class App extends Component{
         return(
             <div>
                 dice_puzzle_game
+                <Playground />
             </div>
         )
     }
