@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import Add from "./Add"
+import ObjAdd from "./Add";
+import CellColors from "./cell_colors";
 
 class Playground extends Component{
     CreateCells = (i)=>{
         return(
             <div>
-                <button style={Add.CellsButton}>
+                <button style={ObjAdd.CellsButton} className={"ButtCells"} id={"ButtId_" + i}>
                     {i}
                 </button>
             </div>
@@ -15,7 +16,7 @@ class Playground extends Component{
     CellsBorder = ()=>{
         return(
             <div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(0)}
                     {this.CreateCells(1)}
                     {this.CreateCells(2)}
@@ -28,7 +29,7 @@ class Playground extends Component{
                     {this.CreateCells(9)}
                     {this.CreateCells(10)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(11)}
                     {this.CreateCells(12)}
                     {this.CreateCells(13)}
@@ -41,7 +42,7 @@ class Playground extends Component{
                     {this.CreateCells(20)}
                     {this.CreateCells(21)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(22)}
                     {this.CreateCells(23)}
                     {this.CreateCells(24)}
@@ -54,7 +55,7 @@ class Playground extends Component{
                     {this.CreateCells(31)}
                     {this.CreateCells(32)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(33)}
                     {this.CreateCells(34)}
                     {this.CreateCells(35)}
@@ -67,7 +68,7 @@ class Playground extends Component{
                     {this.CreateCells(42)}
                     {this.CreateCells(43)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(44)}
                     {this.CreateCells(45)}
                     {this.CreateCells(46)}
@@ -80,7 +81,7 @@ class Playground extends Component{
                     {this.CreateCells(53)}
                     {this.CreateCells(54)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(55)}
                     {this.CreateCells(56)}
                     {this.CreateCells(57)}
@@ -93,7 +94,7 @@ class Playground extends Component{
                     {this.CreateCells(64)}
                     {this.CreateCells(65)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(66)}
                     {this.CreateCells(67)}
                     {this.CreateCells(68)}
@@ -106,7 +107,7 @@ class Playground extends Component{
                     {this.CreateCells(75)}
                     {this.CreateCells(76)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(77)}
                     {this.CreateCells(78)}
                     {this.CreateCells(79)}
@@ -119,7 +120,7 @@ class Playground extends Component{
                     {this.CreateCells(86)}
                     {this.CreateCells(87)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(88)}
                     {this.CreateCells(89)}
                     {this.CreateCells(90)}
@@ -132,7 +133,7 @@ class Playground extends Component{
                     {this.CreateCells(97)}
                     {this.CreateCells(98)}
                 </div>
-                <div style={Add.StyleCellsRow}>
+                <div style={ObjAdd.StyleCellsRow}>
                     {this.CreateCells(99)}
                     {this.CreateCells(100)}
                     {this.CreateCells(101)}
@@ -153,9 +154,10 @@ class Playground extends Component{
         return(
             <div>
                 {this.CellsBorder()}
+                <CellColors PlaygroundProps={this}/>
             </div>
         )
     }
 }
 
-export default Playground
+export default Playground;
