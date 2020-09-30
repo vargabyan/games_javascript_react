@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ObjAdd from "./Add";
 import CellColors from "./cell_colors";
-import {CheckLackOfColor} from "./move"
+// import {CheckLackOfColor} from "./move";
+import {SwapTheContentsOfTwoCells} from "./move";
 
 class Playground extends Component{
     CreateCells = (cellsIndex,ColumnIndex)=>{
@@ -11,15 +12,21 @@ class Playground extends Component{
                 style={ObjAdd.CellsButton} 
                 className={"ButtCells"} 
                 id={"ButtId"}
-                onClick={()=>{console.log(document.getElementsByClassName("ColumnCell")[ColumnIndex].children[cellsIndex].children[0].style.backgroundColor = "")
-                CheckLackOfColor()
-                
-                }}
+                onClick={()=>{this.OnClickCell(cellsIndex,ColumnIndex)}}
                 >
                     {cellsIndex}
                 </button>
             </div>
         )
+    }
+
+    OnClickCell = (cellsIndex,ColumnIndex)=>{
+        let cell = document.getElementsByClassName("ColumnCell")[ColumnIndex].children[cellsIndex].children[0].style.backgroundColor
+
+        if (cell !== "") {
+            ObjAdd.ArrOnClick.push([cell,cellsIndex,ColumnIndex])
+            SwapTheContentsOfTwoCells()
+        }
     }
 
     ColumnForCell = (ColumnIndex)=>{

@@ -13,6 +13,8 @@ const ObjAdd = {
         'blueviolet',
         'rgb(71, 255, 47)',
         'yellow'
-    ]
+    ],
+    ArrOnClick: [],
+    ArrCounterColors: {} 
 }
 export default ObjAdd
