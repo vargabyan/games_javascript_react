@@ -42,7 +42,6 @@ class CellColors extends Component{
                     }
                 }
                 else if (j !== 0 && cell === "") {
-                    // console.log(i, j);
                     if (bul === true) {
                         this.MovementOColorsInThePillar(i,j)
                         bul = false
@@ -68,7 +67,6 @@ class CellColors extends Component{
 
                     cellCalculetNum++
                     if (cellCalculetNum === 109 && bul === true) {
-                        // console.log(cellCalculetNum);
                         RemovingMoreThanTwoConsecutiveColors()
                     }
                 }

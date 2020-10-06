@@ -1,50 +1,85 @@
 import React, { Component } from "react";
 import ObjAdd from "./Add";
 import CellColors from "./cell_colors";
-// import {CheckLackOfColor} from "./move";
 import {SwapTheContentsOfTwoCells} from "./move";
 
 class Playground extends Component{
-    CreateCells = (cellsIndex,ColumnIndex)=>{
+    CreateCells = (cell_i,colum_i)=>{
         return(
-            <div>
+            <div style={ObjAdd.DivButton}>
                 <button 
                 style={ObjAdd.CellsButton} 
                 className={"ButtCells"} 
                 id={"ButtId"}
-                onClick={()=>{this.OnClickCell(cellsIndex,ColumnIndex)}}
+                onClick={()=>{this.OnClickCell(cell_i,colum_i)}}
                 >
-                    {cellsIndex}
                 </button>
             </div>
         )
     }
 
-    OnClickCell = (cellsIndex,ColumnIndex)=>{
-        let cell = document.getElementsByClassName("ColumnCell")[ColumnIndex].children[cellsIndex].children[0].style.backgroundColor
+    OnClickCell = (cell_i,colum_i)=>{
+        let cell = document.getElementsByClassName("ColumnCell")
+        let cellColor = document.getElementsByClassName("ColumnCell")[colum_i].children[cell_i].children[0].style.backgroundColor
 
-        if (cell !== "") {
-            ObjAdd.ArrOnClick.push([cell,cellsIndex,ColumnIndex])
-            SwapTheContentsOfTwoCells()
+        if (cellColor !== "") {
+            if (ObjAdd.ArrOnClick.length === 0) {
+                ObjAdd.ArrOnClick.push([colum_i,cell_i,cellColor])
+
+                cell[ObjAdd.ArrOnClick[0][0]].children[ObjAdd.ArrOnClick[0][1]].children[0].style.border = "solid 3px black"
+
+            } else if (ObjAdd.ArrOnClick.length === 1) {
+                
+                if ((colum_i === ObjAdd.ArrOnClick[0][0] 
+                 && (cell_i === (ObjAdd.ArrOnClick[0][1] + 1) || cell_i === (ObjAdd.ArrOnClick[0][1] - 1)) 
+                 && cellColor !== ObjAdd.ArrOnClick[0][2]) 
+                 ||
+                    (cell_i === ObjAdd.ArrOnClick[0][1] 
+                 && (colum_i === (ObjAdd.ArrOnClick[0][0] + 1) || colum_i === (ObjAdd.ArrOnClick[0][0] - 1)) 
+                 && cellColor !== ObjAdd.ArrOnClick[0][2])) {
+                    ObjAdd.ArrOnClick.push([colum_i,cell_i,cellColor])
+
+                    cell[ObjAdd.ArrOnClick[0][0]].children[ObjAdd.ArrOnClick[0][1]].children[0].style.border = "none"
+
+                    SwapTheContentsOfTwoCells()
+                } else {
+                    ObjAdd.ArrOnClick.push([colum_i,cell_i,cellColor])
+
+                    if (ObjAdd.ArrOnClick[0][0] === ObjAdd.ArrOnClick[1][0] 
+                        && ObjAdd.ArrOnClick[0][1] === ObjAdd.ArrOnClick[1][1] 
+                        && ObjAdd.ArrOnClick[0][2] === ObjAdd.ArrOnClick[1][2]) {
+
+                        cell[ObjAdd.ArrOnClick[0][0]].children[ObjAdd.ArrOnClick[0][1]].children[0].style.border = "none"
+
+                        ObjAdd.ArrOnClick = []
+                    } else {
+                        cell[ObjAdd.ArrOnClick[0][0]].children[ObjAdd.ArrOnClick[0][1]].children[0].style.border = "none"
+
+                        ObjAdd.ArrOnClick = []
+                        ObjAdd.ArrOnClick.push([colum_i,cell_i,cellColor])
+
+                        cell[ObjAdd.ArrOnClick[0][0]].children[ObjAdd.ArrOnClick[0][1]].children[0].style.border = "solid 3px black"
+                    }
+                }
+            }
         }
     }
 
-    ColumnForCell = (ColumnIndex)=>{
+    ColumnForCell = (colum_i)=>{
         return(
             <div className={"ColumnCell"} style={ObjAdd.StyleCellsRow}>
-            {ColumnIndex}
-            {this.CreateCells(0,ColumnIndex)}
-            {this.CreateCells(1,ColumnIndex)}
-            {this.CreateCells(2,ColumnIndex)}
-            {this.CreateCells(3,ColumnIndex)}
-            {this.CreateCells(4,ColumnIndex)}
-            {this.CreateCells(5,ColumnIndex)}
-            {this.CreateCells(6,ColumnIndex)}
-            {this.CreateCells(7,ColumnIndex)}
-            {this.CreateCells(8,ColumnIndex)}
-            {this.CreateCells(9,ColumnIndex)}
-            {this.CreateCells(10,ColumnIndex)}
-        </div>
+                {this.CreateCells(0,colum_i)}
+                {this.CreateCells(1,colum_i)}
+                {this.CreateCells(2,colum_i)}
+                {this.CreateCells(3,colum_i)}
+                {this.CreateCells(4,colum_i)}
+                {this.CreateCells(5,colum_i)}
+                {this.CreateCells(6,colum_i)}
+                {this.CreateCells(7,colum_i)}
+                {this.CreateCells(8,colum_i)}
+                {this.CreateCells(9,colum_i)}
+                {this.CreateCells(10,colum_i)}
+            </div>
         )
     }
 
@@ -68,8 +103,8 @@ class Playground extends Component{
     render(){
         return(
             <div>
-                {this.CellsBorder()}
                 <CellColors PlaygroundProps={this}/>
+                {this.CellsBorder()}
             </div>
         )
     }

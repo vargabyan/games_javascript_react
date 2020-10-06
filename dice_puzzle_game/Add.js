@@ -1,4 +1,5 @@
 const ObjAdd = {
+    CountGame: 0,
     StyleCellsRow: {
         float: 'left',
     },
@@ -6,6 +7,14 @@ const ObjAdd = {
         width: '50px',
         height: '50px',
         border: 'none',
+        outline: 'none',
+        padding: '0',
+        margin: 'none'
+    },
+    DivButton: {
+        padding: '0',
+        width: '50px',
+        height: '50px',
     },
     ArrCellColors: [
         'red',

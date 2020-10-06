@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import Playground from "./playground";
 
-
 class App extends Component{
 
     render(){
         return(
             <div>
-                dice_puzzle_game
+                <h3>dice puzzle</h3>
                 <Playground />
             </div>
         )
