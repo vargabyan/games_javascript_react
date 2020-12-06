@@ -1,19 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import Tank from "./tank";
 
 
-class App extends Component {
+function App() {
 
- render(){
-    
-
-     return(
+    return(
         <div>
             <h1>tansks</h1>
             <Tank />
         </div>
-     )
- }
+    )
 }
 
 // // ReactDOM.render(<App /> , document.getElementById("root"))
